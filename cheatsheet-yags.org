@@ -3,8 +3,6 @@
 
 #+latex_header: \usepackage[default,osfigures]{opensans}
 #+latex_header: \usepackage[scaled=0.8]{luximono}
-#+latex_header: \usepackage{hyperref}
-#+latex_header: \usepackage{amssymb}
 
 #+latex: \begin{multicols}{3}
 #+latex: \scriptsize
