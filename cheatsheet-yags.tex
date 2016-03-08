@@ -1,0 +1,232 @@
+% Created 2016-03-07 Mon 21:10
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage[colorlinks=true, linkcolor=blue]{hyperref}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage{enumitem}
+\setlist[description]{style=nextline}
+\usepackage[compact]{titlesec}
+\usepackage[landscape,margin=1cm]{geometry}
+\titleformat{\section}[frame]
+{\normalfont\sffamily}
+{\thesection}{.1em}{\small\bfseries\filcenter}
+\titleformat{\subsection}[block]
+{\normalfont\sffamily}
+{\thesection}{0em}{\scriptsize\bfseries\filcenter}
+\titleformat{\subsubsection}[block]
+{\normalfont\sffamily}
+{\thesection}{0em}{\tiny\bfseries}
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\@maketitle}{
+\newpage
+\begin{center}%
+{\Large\bfseries \@title \par}%
+\end{center}%
+\par}
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\lstset{%
+basicstyle=\ttfamily\tiny,
+commentstyle=\itshape\ttfamily\tiny,
+showspaces=false,
+showstringspaces=false,
+breaklines=true,
+breakautoindent=true,
+}
+\setlist{wide=0pt,nosep}
+\usepackage[default,osfigures]{opensans}
+\usepackage[scaled=0.8]{luximono}
+\date{}
+\title{Yags cheatsheet}
+\hypersetup{
+ pdfauthor={Rafael Villarroel},
+ pdftitle={Yags cheatsheet},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.5.1 (Org mode 8.3.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{multicols}{3}
+\scriptsize
+\thispagestyle{empty}
+
+\section{Graph definitions}
+\label{sec:orgheadline1}
+
+\begin{description}
+\item[{Adjacency list}] \texttt{g:=GraphByAdjacencies([[],[4],[1,2],[]])}
+
+\includegraphics[width=3cm]{bylist.png}
+\item[{Adjacency matrix}] \texttt{M:=[[false, true, false], [true, false, true], [false, true, false]];}
+\texttt{g:=GraphByAdjMatrix(M);}
+\item[{Complete cover}] \texttt{g:=GraphByCompleteCover([[1,2,3,4],[4,5,6]]);}
+
+\includegraphics[width=3cm]{bycomplete.png}
+\item[{By relation}] \texttt{f:=function(x,y) return Intersection(x,y)<>[]; end;;}
+\texttt{g:=GraphByRelation([[1,2,3],[3,4,5],[5,6,7]],f);}
+\item[{By walks}] \texttt{g:=GraphByWalks([1,2,3,4,1],[1,5,6]);} 
+
+\includegraphics[width=3cm]{bywalks.png}
+
+\texttt{g:=GraphByWalks([1,[2,3,4],5],[5,6]);}
+
+\includegraphics[width=3cm]{bywalks2.png}
+\item[{As intersection graph}] \texttt{g:=IntersectionGraph([[1,2,3],[3,4,5],[5,6,7]]);}
+\item[{As a copy}] \texttt{h:=CopyGraph(g)}
+\item[{As an induced subgraph}] \texttt{h:=InducedSubgraph(g,[3,4,6]);}
+\end{description}
+
+\section{Graph families (with parameters)}
+\label{sec:orgheadline2}
+
+\begin{itemize}
+\item \texttt{g:=DiscreteGraph(n)}
+\item \texttt{g:=CompleteGraph(n)}
+\item \texttt{g:=PathGraph(n)} \(n\) vertices.
+\item \texttt{g:=CycleGraph(n)}
+\item \texttt{g:=CubeGraph(n)}
+\item \texttt{g:=OctahedralGraph(n)}
+\item \texttt{g:=JohnsonGraph(n,r)} Vertices are subsets of \(\{1,2,\ldots,n\}\)
+with \(r\) elements, edges between subsets with intersection of
+\(r-1\) elements.
+\item \texttt{g:=CompleteBipartiteGraph(n,m)}
+\item \texttt{g:=CompleteMultipartiteGraph(n1,n2[, n3 ...])}
+\item \texttt{g:=WheelGraph(n)}
+\item \texttt{g:=WheelGraph(7,2)} Second optional parameter is the radius of the
+wheel.
+\item \texttt{g:=FanGraph(4);}
+\item \texttt{g:=SunGraph(6);}
+\item \texttt{g:=SpikyGraph(4);}
+\item Examples: Wheel, Fan, Sun, Spiky:
+
+\includegraphics[width=2cm]{wheel.png} \includegraphics[width=2cm]{fan.png} \includegraphics[width=2cm]{sun.png} \includegraphics[width=2cm]{spiky.png}
+\end{itemize}
+
+\section{Named graphs}
+\label{sec:orgheadline3}
+\begin{description}
+\item[{Platonic}] \texttt{Tetrahedron}, \texttt{Octahedron}, \texttt{Cube}, \texttt{Dodecahedron}, \texttt{Icosahedron}.
+\item[{Other}] \texttt{TrivialGraph}, \texttt{DiamondGraph}, \texttt{ClawGraph}, \texttt{PawGraph},
+\texttt{HouseGraph}, \texttt{BullGraph}, \texttt{AntennaGraph}, \texttt{KiteGraph}, \texttt{SnubDisphenoid}.
+\end{description}
+\section{Random graphs}
+\label{sec:orgheadline4}
+
+\begin{itemize}
+\item \texttt{g:=RandomGraph(n)}
+\item \texttt{g:=RandomGraph(n,p)} Graph with \(n\) vertices, each edge with
+probability \(p\) to appear.
+\end{itemize}
+
+\section{Modifying graphs}
+\label{sec:orgheadline5}
+
+\begin{itemize}
+\item \texttt{h:=RemoveVertices(g,[1,3]);}
+\item \texttt{h:=AddEdges(g,[[1,2]]);}
+\item \texttt{h:=RemoveEdges(g,[[1,2],[3,4]]);}
+\end{itemize}
+
+\section{Parameters}
+\label{sec:orgheadline6}
+
+\begin{itemize}
+\item \texttt{Order(g)}
+\item \texttt{Size(g)}
+\item \texttt{CliqueNumber(g)}
+\item \texttt{VertexDegree(g,v)}
+\end{itemize}
+
+\section{Boolean tests}
+\label{sec:orgheadline7}
+\begin{itemize}
+\item \texttt{IsCompleteGraph(g)}
+\item \texttt{IsCliqueHelly(g)}
+\item \texttt{IsDiamondFree(g)}
+\end{itemize}
+\section{Products}
+\label{sec:orgheadline8}
+\begin{itemize}
+\item \texttt{p=BoxProduct(g,h)}
+\item \texttt{p=TimesProduct(g,h)}
+\item \texttt{p=BoxTimesProduct(g,h)}
+\item \texttt{p=DisjointUnion(g,h)}
+\item \texttt{p=Join(g,h)}
+\item \texttt{p=GraphSum(g,l)} \(l\) is a list of graphs. Suppose that \(g\) has
+\(n\) vertices. In the disjoint union of the first \(n\) graphs of
+\(l\) (using \texttt{TrivialGraphs} if needed to fill \(n\) slots), add all
+edges between graphs corresponding to adjacent vertices in \(g\).
+\item \texttt{p=Composition(g,h)} is the same as \texttt{GraphSum(g,l)}, where \(l\) is
+a list of length the order of \(g\), with all components equal to
+\(h\).
+\end{itemize}
+
+\section{Operators}
+\label{sec:orgheadline9}
+
+\begin{itemize}
+\item \texttt{h:=CliqueGraph(g)}
+\item \texttt{h:=CliqueGraph(g,m)} Stops when a maximum of
+\(m\) cliques have been found.
+\item \texttt{h:=LineGraph(g)}
+\item \texttt{h:=ComplementGraph(g)}
+\item \texttt{h:=QuotientGraph(g,p)} \(p\) is a partition of vertices. The
+vertices of \(h\) are the parts of \(p\), with two vertices adjacent
+if there are two vertices adjacent in \(g\) in the corresponding
+parts. Singletons in \(p\) may be omitted.
+\item \texttt{h:=QuotientGraph(g,l)} \(l\) is a pair of lists of vertices of the
+same length, with repetitions allowed. In \(h\), each vertex of the
+first list is identified with the corresponding vertex in the second
+list.
+\end{itemize}
+
+\section{Lists}
+\label{sec:orgheadline10}
+\begin{itemize}
+\item \texttt{VertexNames(g)}
+\item \texttt{Cliques(g)}
+\item \texttt{Cliques(g,m)} Stops if a maximum of \(m\) cliques have been found.
+\item \texttt{AdjMatrix(g)}
+\item \texttt{Adjaceny(g,v)}
+\item \texttt{Adjacencies(g)}
+\item \texttt{VertexDegrees(g)}
+\item \texttt{Edges(g)}
+\item \texttt{CompletesOfGivenOrder(g,o)}
+\end{itemize}
+
+\section{Distances}
+\label{sec:orgheadline11}
+\begin{itemize}
+\item \texttt{Distance(g,x,y)}
+\item \texttt{DistanceMatrix(g)}
+\item \texttt{Diameter(g)}
+\item \texttt{Eccentricity(g,x)}
+\item \texttt{Radius(g)}
+\item \texttt{Distances(g,a,b)} \(a\), \(b\) are lists of vertices. Returns a list.
+\item \texttt{DistanceSet(g,a,b)} As before, but returns a set.
+\item \texttt{DistanceGraph(g,d)} The graph with vertex set the vertices of
+\(g\), two vertices adjacent if their distance is in \(d\).
+\item \texttt{PowerGraph(g,n)} Same as the distance graph with set of distance
+\(\{1,\ldots,n\}\).
+\end{itemize}
+
+\end{multicols}
+\end{document}

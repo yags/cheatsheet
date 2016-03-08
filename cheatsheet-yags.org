@@ -131,7 +131,7 @@
 - ~Distance(g,x,y)~
 - ~DistanceMatrix(g)~
 - ~Diameter(g)~
-- ~Excentricity(g,x)~ Should be Eccentricity
+- ~Eccentricity(g,x)~ 
 - ~Radius(g)~
 - ~Distances(g,a,b)~ \(a\), \(b\) are lists of vertices. Returns a list.
 - ~DistanceSet(g,a,b)~ As before, but returns a set.
