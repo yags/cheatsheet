@@ -1,4 +1,4 @@
-% Created 2016-03-07 Mon 21:10
+% Created 2016-08-30 Tue 09:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -53,13 +53,13 @@ breakautoindent=true,
 \usepackage[default,osfigures]{opensans}
 \usepackage[scaled=0.8]{luximono}
 \date{}
-\title{Yags cheatsheet}
+\title{Cheatsheet for YAGS 0.0.2}
 \hypersetup{
  pdfauthor={Rafael Villarroel},
- pdftitle={Yags cheatsheet},
+ pdftitle={Cheatsheet for YAGS 0.0.2},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 24.5.1 (Org mode 8.3.4)}, 
+ pdfcreator={Emacs 24.5.1 (Org mode N/A)}, 
  pdflang={English}}
 \begin{document}
 
@@ -69,7 +69,7 @@ breakautoindent=true,
 \thispagestyle{empty}
 
 \section{Graph definitions}
-\label{sec:orgheadline1}
+\label{sec:org0624c50}
 
 \begin{description}
 \item[{Adjacency list}] \texttt{g:=GraphByAdjacencies([[],[4],[1,2],[]])}
@@ -77,6 +77,7 @@ breakautoindent=true,
 \includegraphics[width=3cm]{bylist.png}
 \item[{Adjacency matrix}] \texttt{M:=[[false, true, false], [true, false, true], [false, true, false]];}
 \texttt{g:=GraphByAdjMatrix(M);}
+\item[{List of edges}] \texttt{g:=GraphByEdges([[1,2],[2,3],[3,4]]);}
 \item[{Complete cover}] \texttt{g:=GraphByCompleteCover([[1,2,3,4],[4,5,6]]);}
 
 \includegraphics[width=3cm]{bycomplete.png}
@@ -95,7 +96,7 @@ breakautoindent=true,
 \end{description}
 
 \section{Graph families (with parameters)}
-\label{sec:orgheadline2}
+\label{sec:org5950968}
 
 \begin{itemize}
 \item \texttt{g:=DiscreteGraph(n)}
@@ -107,8 +108,14 @@ breakautoindent=true,
 \item \texttt{g:=JohnsonGraph(n,r)} Vertices are subsets of \(\{1,2,\ldots,n\}\)
 with \(r\) elements, edges between subsets with intersection of
 \(r-1\) elements.
+\item \texttt{g:=Circulant(n,J)} Second paramenter is a list of jumps
 \item \texttt{g:=CompleteBipartiteGraph(n,m)}
 \item \texttt{g:=CompleteMultipartiteGraph(n1,n2[, n3 ...])}
+\item \texttt{g:=TorusGraph(n,m)}
+\item \texttt{g:=TreeGraph(L)} \(L\) is a list. Vertices at depth \(k\) have
+\texttt{L[k]} children.
+\item \texttt{g:=TreeGraph(n,k)} Same as \texttt{TreeGraph([n,n,..,n])} (the list has
+length \texttt{k})
 \item \texttt{g:=WheelGraph(n)}
 \item \texttt{g:=WheelGraph(7,2)} Second optional parameter is the radius of the
 wheel.
@@ -121,14 +128,18 @@ wheel.
 \end{itemize}
 
 \section{Named graphs}
-\label{sec:orgheadline3}
+\label{sec:org3df8d9d}
 \begin{description}
 \item[{Platonic}] \texttt{Tetrahedron}, \texttt{Octahedron}, \texttt{Cube}, \texttt{Dodecahedron}, \texttt{Icosahedron}.
-\item[{Other}] \texttt{TrivialGraph}, \texttt{DiamondGraph}, \texttt{ClawGraph}, \texttt{PawGraph},
-\texttt{HouseGraph}, \texttt{BullGraph}, \texttt{AntennaGraph}, \texttt{KiteGraph}, \texttt{SnubDisphenoid}.
+\item[{Other}] \texttt{TrivialGraph}, \texttt{DiamondGraph}, \texttt{ClawGraph},
+\texttt{HouseGraph}, \texttt{BullGraph}, \texttt{AntennaGraph}, \texttt{KiteGraph},
+\texttt{AGraph}, \texttt{ChairGraph}, \texttt{DartGraph}, \texttt{DominoGraph},
+\texttt{FishGraph}, \texttt{GemGraph}, \texttt{HouseGraph}, \texttt{ParachuteGraph},
+\texttt{ParapluieGraph}, \texttt{PawGraph}, \texttt{PetersenGraph}, \texttt{RGraph},
+\texttt{SnubDisphenoid}.
 \end{description}
 \section{Random graphs}
-\label{sec:orgheadline4}
+\label{sec:orgdfd8b7a}
 
 \begin{itemize}
 \item \texttt{g:=RandomGraph(n)}
@@ -136,8 +147,8 @@ wheel.
 probability \(p\) to appear.
 \end{itemize}
 
-\section{Modifying graphs}
-\label{sec:orgheadline5}
+\section{New graphs from old}
+\label{sec:org3dd9654}
 
 \begin{itemize}
 \item \texttt{h:=RemoveVertices(g,[1,3]);}
@@ -146,24 +157,37 @@ probability \(p\) to appear.
 \end{itemize}
 
 \section{Parameters}
-\label{sec:orgheadline6}
+\label{sec:orgf22d7ba}
 
 \begin{itemize}
 \item \texttt{Order(g)}
 \item \texttt{Size(g)}
 \item \texttt{CliqueNumber(g)}
 \item \texttt{VertexDegree(g,v)}
+\item \texttt{MaxDegree(g)}
+\item \texttt{MinDegree(g)}
+\item \texttt{Girth(g)}
+\item \texttt{NumberOfCliques(g)}
+\item \texttt{NumberOfConnectedComponents(g)}
 \end{itemize}
 
 \section{Boolean tests}
-\label{sec:orgheadline7}
+\label{sec:orge0d0556}
 \begin{itemize}
 \item \texttt{IsCompleteGraph(g)}
 \item \texttt{IsCliqueHelly(g)}
 \item \texttt{IsDiamondFree(g)}
+\item \texttt{IsEdge(g,x,y)} or \texttt{IsEdge(g,[x,y])}
+\item \texttt{IsIsomorphicGraph(g,h)}
+\item \texttt{IsCompactSurface(g)}
+\item \texttt{IsSurface(g)}
+\item \texttt{IsLocallyConstant(g)}
+\item \texttt{IsLocallyH(g,h)}
+\item \texttt{IsLoopless(g)}
 \end{itemize}
+
 \section{Products}
-\label{sec:orgheadline8}
+\label{sec:org6bf0823}
 \begin{itemize}
 \item \texttt{p=BoxProduct(g,h)}
 \item \texttt{p=TimesProduct(g,h)}
@@ -180,7 +204,7 @@ a list of length the order of \(g\), with all components equal to
 \end{itemize}
 
 \section{Operators}
-\label{sec:orgheadline9}
+\label{sec:orgd17ee5d}
 
 \begin{itemize}
 \item \texttt{h:=CliqueGraph(g)}
@@ -188,32 +212,49 @@ a list of length the order of \(g\), with all components equal to
 \(m\) cliques have been found.
 \item \texttt{h:=LineGraph(g)}
 \item \texttt{h:=ComplementGraph(g)}
+\item \texttt{h:=Cone(g)}
+\item \texttt{h:=Suspension(g)}
+\item \texttt{h:=ParedGraph(g)}
+\item \texttt{h:=CompletelyParedGraph(g)}
 \item \texttt{h:=QuotientGraph(g,p)} \(p\) is a partition of vertices. The
 vertices of \(h\) are the parts of \(p\), with two vertices adjacent
 if there are two vertices adjacent in \(g\) in the corresponding
 parts. Singletons in \(p\) may be omitted.
-\item \texttt{h:=QuotientGraph(g,l)} \(l\) is a pair of lists of vertices of the
+\item \texttt{h:=QuotientGraph(g,l1,l2)} \(l1,l2\) are lists of vertices of the
 same length, with repetitions allowed. In \(h\), each vertex of the
 first list is identified with the corresponding vertex in the second
 list.
+\item \texttt{h:=Link(g,x)} The subgraph of \(g\) induced by the neighbors of
+\(x\).
+\item \texttt{h:=SpanningForest(g)}
 \end{itemize}
 
 \section{Lists}
-\label{sec:orgheadline10}
+\label{sec:org1b891f4}
 \begin{itemize}
 \item \texttt{VertexNames(g)}
 \item \texttt{Cliques(g)}
 \item \texttt{Cliques(g,m)} Stops if a maximum of \(m\) cliques have been found.
+\item \texttt{Basement(kng,kmg,x)} \(n\leq m\)
 \item \texttt{AdjMatrix(g)}
 \item \texttt{Adjaceny(g,v)}
 \item \texttt{Adjacencies(g)}
 \item \texttt{VertexDegrees(g)}
 \item \texttt{Edges(g)}
 \item \texttt{CompletesOfGivenOrder(g,o)}
+\item \texttt{ConnectedComponents(g)}
+\item \texttt{GraphAttributeStatistics(n,p,F)} Returns information about the
+parameter \texttt{F} for 100 random graphs of order \(n\) and edge
+probability \(p\).
+\item \texttt{BoundaryVertices(g)} For \(g\) a triangulation of a compact
+surface, returns the list of vertices whose link is isomorphic to a
+path.
+\item \texttt{InteriorVertices(g)}
+\item \texttt{SpanningForestEdges(g)}
 \end{itemize}
 
 \section{Distances}
-\label{sec:orgheadline11}
+\label{sec:org8f1c0f3}
 \begin{itemize}
 \item \texttt{Distance(g,x,y)}
 \item \texttt{DistanceMatrix(g)}
@@ -227,6 +268,85 @@ list.
 \item \texttt{PowerGraph(g,n)} Same as the distance graph with set of distance
 \(\{1,\ldots,n\}\).
 \end{itemize}
+
+\section{Graph morphisms}
+\label{sec:org23e7bd4}
+
+\begin{itemize}
+\item \texttt{IsoMorphisms(g,h)}
+\item \texttt{AutomorphismGroup(g)}
+\item \texttt{Morphism(g,h)}, \texttt{Morphisms(g,h)}, \texttt{NextMorphism(g,h,f)}
+\item \texttt{MonoMorphism(g,h)}, \texttt{MonoMorphisms(g,h)}, \texttt{NextMonoMorphism(g,h,f)}
+\item \texttt{EpiMorphism(g,h)}, \texttt{EpiMorphisms(g,h)}, \texttt{NextEpiMorphism(g,h,f)}
+\item \texttt{WeakMorphism(g,h)}, \texttt{WeakMorphisms(g,h)},
+\texttt{NextWeakMorphism(g,h,f)}, and more predefined classes of morphisms and the
+possibility to define new classes
+\end{itemize}
+
+\section{Small Graphs}
+\label{sec:orgefb2c0d}
+
+\begin{itemize}
+\item \texttt{ConnectedGraphsOfGivenOrder(n)} Up to \(n=9\).
+\item \texttt{Graph6ToGraph(s)} \texttt{s} is a string.
+\item \texttt{GraphsOfGivenOrder(n)} Up to \(n=9\).
+\item \texttt{ImportGraph6(f)} \texttt{f} is a filename.
+\end{itemize}
+
+\section{Graph categories}
+\label{sec:org853429d}
+
+\begin{itemize}
+\item \texttt{DefaultGraphCategory} A variable that holds the current graph
+category. Has to be set with, e.g. \texttt{SetDefaultCategory(OrientedGraphs)}
+\end{itemize}
+
+\subsection{Graph categories:}
+\label{sec:orge59deb4}
+\texttt{Graphs}, \texttt{UndirectedGraphs}, \texttt{LooplessGraphs}, \texttt{SimpleGraphs},
+\texttt{OrientedGraphs}. 
+
+\section{Digraphs}
+\label{sec:org96a06ef}
+
+\begin{itemize}
+\item \texttt{InNeigh(g,x)} List of in-neighbors of \(x\) in \(g\).
+\item \texttt{IsTournament(g)}
+\item \texttt{IsTransitiveTournament(g)}
+\item \texttt{Orientations(g)} List of all oriented graphs that can be obtained
+from \(g\)
+\end{itemize}
+
+\section{Draw}
+\label{sec:org63a6375}
+\begin{itemize}
+\item \texttt{Draw(g)} Shows a window with a drawing of \texttt{g}. Commands in the \texttt{draw} window: \texttt{h}:help, \texttt{f}:fit graph,
+\texttt{l}: toggle labels, \texttt{d}: toggle dynamics, \texttt{r}: toggle repulsion, \texttt{s}: save \& quit, \texttt{q}:
+quit without saving
+\end{itemize}
+
+\section{Backtrack}
+\label{sec:org384859e}
+
+Example: coloring with two colors:
+\lstset{basicstyle=\ttfamily,commentstyle=\itshape\ttfamily\color{green!50!black},keywordstyle=\bfseries\color{blue},stringstyle=\color{purple},breaklines=true,showstringspaces=false,language=gap,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+g:=PathGraph(3);
+chk:=function(L,g)
+    local x,y;
+    if L=[] then return true; fi;
+    x:=Length(L);
+    for y in [1..x-1] do
+        if IsEdge(g,[x,y]) and L[x]=L[y] then
+            return false;
+        fi;
+    od;
+    return true;
+end;
+\end{lstlisting}
+then \texttt{BacktrackBag([0,1],chk,Order(g),g);} returns \texttt{[ [ 0, 1, 0 ], [
+  1, 0, 1 ] ]}. 
+
 
 \end{multicols}
 \end{document}
