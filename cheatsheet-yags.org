@@ -1,4 +1,4 @@
-#+title: Cheatsheet for YAGS 0.0.2
+#+title: Cheatsheet for YAGS
 #+setupfile: ~/Dropbox/org/cheatsheetheader/cheatsheetheader.org
 
 #+latex_header: \usepackage[default,osfigures]{opensans}

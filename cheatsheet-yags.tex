@@ -1,4 +1,4 @@
-% Created 2016-08-30 Tue 09:58
+% Created 2016-09-08 Thu 14:01
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -53,10 +53,10 @@ breakautoindent=true,
 \usepackage[default,osfigures]{opensans}
 \usepackage[scaled=0.8]{luximono}
 \date{}
-\title{Cheatsheet for YAGS 0.0.2}
+\title{Cheatsheet for YAGS}
 \hypersetup{
  pdfauthor={Rafael Villarroel},
- pdftitle={Cheatsheet for YAGS 0.0.2},
+ pdftitle={Cheatsheet for YAGS},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 24.5.1 (Org mode N/A)}, 
@@ -69,7 +69,7 @@ breakautoindent=true,
 \thispagestyle{empty}
 
 \section{Graph definitions}
-\label{sec:org0624c50}
+\label{sec:orgde2a8c9}
 
 \begin{description}
 \item[{Adjacency list}] \texttt{g:=GraphByAdjacencies([[],[4],[1,2],[]])}
@@ -96,7 +96,7 @@ breakautoindent=true,
 \end{description}
 
 \section{Graph families (with parameters)}
-\label{sec:org5950968}
+\label{sec:org7a55599}
 
 \begin{itemize}
 \item \texttt{g:=DiscreteGraph(n)}
@@ -128,7 +128,7 @@ wheel.
 \end{itemize}
 
 \section{Named graphs}
-\label{sec:org3df8d9d}
+\label{sec:org0852a63}
 \begin{description}
 \item[{Platonic}] \texttt{Tetrahedron}, \texttt{Octahedron}, \texttt{Cube}, \texttt{Dodecahedron}, \texttt{Icosahedron}.
 \item[{Other}] \texttt{TrivialGraph}, \texttt{DiamondGraph}, \texttt{ClawGraph},
@@ -139,7 +139,7 @@ wheel.
 \texttt{SnubDisphenoid}.
 \end{description}
 \section{Random graphs}
-\label{sec:orgdfd8b7a}
+\label{sec:orgd2f50b0}
 
 \begin{itemize}
 \item \texttt{g:=RandomGraph(n)}
@@ -148,7 +148,7 @@ probability \(p\) to appear.
 \end{itemize}
 
 \section{New graphs from old}
-\label{sec:org3dd9654}
+\label{sec:orgba10ae6}
 
 \begin{itemize}
 \item \texttt{h:=RemoveVertices(g,[1,3]);}
@@ -157,7 +157,7 @@ probability \(p\) to appear.
 \end{itemize}
 
 \section{Parameters}
-\label{sec:orgf22d7ba}
+\label{sec:org75df7db}
 
 \begin{itemize}
 \item \texttt{Order(g)}
@@ -172,7 +172,7 @@ probability \(p\) to appear.
 \end{itemize}
 
 \section{Boolean tests}
-\label{sec:orge0d0556}
+\label{sec:org6acb5eb}
 \begin{itemize}
 \item \texttt{IsCompleteGraph(g)}
 \item \texttt{IsCliqueHelly(g)}
@@ -187,7 +187,7 @@ probability \(p\) to appear.
 \end{itemize}
 
 \section{Products}
-\label{sec:org6bf0823}
+\label{sec:orgcba1cc0}
 \begin{itemize}
 \item \texttt{p=BoxProduct(g,h)}
 \item \texttt{p=TimesProduct(g,h)}
@@ -204,7 +204,7 @@ a list of length the order of \(g\), with all components equal to
 \end{itemize}
 
 \section{Operators}
-\label{sec:orgd17ee5d}
+\label{sec:org1ce4b76}
 
 \begin{itemize}
 \item \texttt{h:=CliqueGraph(g)}
@@ -230,7 +230,7 @@ list.
 \end{itemize}
 
 \section{Lists}
-\label{sec:org1b891f4}
+\label{sec:orga9787f5}
 \begin{itemize}
 \item \texttt{VertexNames(g)}
 \item \texttt{Cliques(g)}
@@ -254,7 +254,7 @@ path.
 \end{itemize}
 
 \section{Distances}
-\label{sec:org8f1c0f3}
+\label{sec:org56e38cd}
 \begin{itemize}
 \item \texttt{Distance(g,x,y)}
 \item \texttt{DistanceMatrix(g)}
@@ -270,7 +270,7 @@ path.
 \end{itemize}
 
 \section{Graph morphisms}
-\label{sec:org23e7bd4}
+\label{sec:orgfd8b47d}
 
 \begin{itemize}
 \item \texttt{IsoMorphisms(g,h)}
@@ -284,7 +284,7 @@ possibility to define new classes
 \end{itemize}
 
 \section{Small Graphs}
-\label{sec:orgefb2c0d}
+\label{sec:org9a84729}
 
 \begin{itemize}
 \item \texttt{ConnectedGraphsOfGivenOrder(n)} Up to \(n=9\).
@@ -294,7 +294,7 @@ possibility to define new classes
 \end{itemize}
 
 \section{Graph categories}
-\label{sec:org853429d}
+\label{sec:org80b9746}
 
 \begin{itemize}
 \item \texttt{DefaultGraphCategory} A variable that holds the current graph
@@ -302,12 +302,12 @@ category. Has to be set with, e.g. \texttt{SetDefaultCategory(OrientedGraphs)}
 \end{itemize}
 
 \subsection{Graph categories:}
-\label{sec:orge59deb4}
+\label{sec:org21f9056}
 \texttt{Graphs}, \texttt{UndirectedGraphs}, \texttt{LooplessGraphs}, \texttt{SimpleGraphs},
 \texttt{OrientedGraphs}. 
 
 \section{Digraphs}
-\label{sec:org96a06ef}
+\label{sec:org972a7a3}
 
 \begin{itemize}
 \item \texttt{InNeigh(g,x)} List of in-neighbors of \(x\) in \(g\).
@@ -318,7 +318,7 @@ from \(g\)
 \end{itemize}
 
 \section{Draw}
-\label{sec:org63a6375}
+\label{sec:org84111ef}
 \begin{itemize}
 \item \texttt{Draw(g)} Shows a window with a drawing of \texttt{g}. Commands in the \texttt{draw} window: \texttt{h}:help, \texttt{f}:fit graph,
 \texttt{l}: toggle labels, \texttt{d}: toggle dynamics, \texttt{r}: toggle repulsion, \texttt{s}: save \& quit, \texttt{q}:
@@ -326,7 +326,7 @@ quit without saving
 \end{itemize}
 
 \section{Backtrack}
-\label{sec:org384859e}
+\label{sec:org809335c}
 
 Example: coloring with two colors:
 \lstset{basicstyle=\ttfamily,commentstyle=\itshape\ttfamily\color{green!50!black},keywordstyle=\bfseries\color{blue},stringstyle=\color{purple},breaklines=true,showstringspaces=false,language=gap,label= ,caption= ,captionpos=b,numbers=none}
